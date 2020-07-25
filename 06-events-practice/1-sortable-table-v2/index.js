@@ -5,11 +5,7 @@ export default class SortableTable {
   data = [];
 
   onSortClick = event => {
-<<<<<<< HEAD
-=======
-    // console.error('onSortClick');
 
->>>>>>> b688b4f4d6148a543b423686a9f3c52ead8b7529
     const column = event.target.closest('[data-sortable="true"]');
     const toggleOrder = order => {
       const orders = {
@@ -21,11 +17,7 @@ export default class SortableTable {
     };
 
     if (column) {
-<<<<<<< HEAD
       const {id, order} = column.dataset;
-=======
-      const { id, order } = column.dataset;
->>>>>>> b688b4f4d6148a543b423686a9f3c52ead8b7529
       const sortedData = this.sortData(id, toggleOrder(order));
       const arrow = column.querySelector('.sortable-table__sort-arrow');
 
@@ -35,12 +27,6 @@ export default class SortableTable {
         column.append(this.subElements.arrow);
       }
 
-<<<<<<< HEAD
-=======
-      // console.error(11111111);
-      // console.error(column.dataset.order);
-
->>>>>>> b688b4f4d6148a543b423686a9f3c52ead8b7529
       this.subElements.body.innerHTML = this.getTableRows(sortedData);
     }
   };
@@ -65,11 +51,7 @@ export default class SortableTable {
     </div>`;
   }
 
-<<<<<<< HEAD
   getHeaderRow({id, title, sortable}) {
-=======
-  getHeaderRow ({id, title, sortable}) {
->>>>>>> b688b4f4d6148a543b423686a9f3c52ead8b7529
     const order = this.sorted.id === id ? this.sorted.order : 'asc';
 
     return `
@@ -80,11 +62,7 @@ export default class SortableTable {
     `;
   }
 
-<<<<<<< HEAD
   getHeaderSortingArrow(id) {
-=======
-  getHeaderSortingArrow (id) {
->>>>>>> b688b4f4d6148a543b423686a9f3c52ead8b7529
     const isOrderExist = this.sorted.id === id ? this.sorted.order : '';
 
     return isOrderExist
@@ -101,11 +79,7 @@ export default class SortableTable {
       </div>`;
   }
 
-<<<<<<< HEAD
   getTableRows(data) {
-=======
-  getTableRows (data) {
->>>>>>> b688b4f4d6148a543b423686a9f3c52ead8b7529
     return data.map(item => `
       <div class="sortable-table__row">
         ${this.getTableRow(item, data)}
@@ -113,11 +87,7 @@ export default class SortableTable {
     ).join('');
   }
 
-<<<<<<< HEAD
   getTableRow(item) {
-=======
-  getTableRow (item) {
->>>>>>> b688b4f4d6148a543b423686a9f3c52ead8b7529
     const cells = this.headersConfig.map(({id, template}) => {
       return {
         id,
@@ -167,7 +137,6 @@ export default class SortableTable {
 
     return arr.sort((a, b) => {
       switch (sortType) {
-<<<<<<< HEAD
         case 'number':
           return direction * (a[id] - b[id]);
         case 'string':
@@ -176,16 +145,6 @@ export default class SortableTable {
           return direction * customSorting(a, b);
         default:
           return direction * (a[id] - b[id]);
-=======
-      case 'number':
-        return direction * (a[id] - b[id]);
-      case 'string':
-        return direction * a[id].localeCompare(b[id], 'ru');
-      case 'custom':
-        return direction * customSorting(a, b);
-      default:
-        return direction * (a[id] - b[id]);
->>>>>>> b688b4f4d6148a543b423686a9f3c52ead8b7529
       }
     });
   }
